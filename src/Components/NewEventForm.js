@@ -1,24 +1,24 @@
 export default function NewEventForm({
-  handleAddEvent,
-  selectOption,
-  generateUniqueID,
+
   handleSubmit,
   newEvent,
   handleTextChange,
   handleSelectChange }) {
-  function addEvent() {
-    const createEvent = {
-      id: generateUniqueID(),
-      eventType: selectOption,
-      name: newEvent.name,
-      organizer: newEvent.organizer,
-      eventImage: newEvent.eventImage || "https://loremflickr.com/640/480/",
-      date: newEvent.date,
-      people: [],
-    };
-    handleAddEvent(createEvent);
-  }
+
+  // function addEvent() { // * adds new event with generated new info, keep in app.js
+  //   const createEvent = {
+  //     id: generateUniqueID(),
+  //     eventType: selectOption,
+  //     name: newEvent.name,
+  //     organizer: newEvent.organizer,
+  //     eventImage: newEvent.eventImage || "https://loremflickr.com/640/480/",
+  //     date: newEvent.date,
+  //     people: [],
+  //   };
+  //   handleAddEvent(createEvent);
+  // }
   return (
+    // * New-Event section of HTML
     <>
       <form onSubmit={handleSubmit}>
         <h3>Create a new event</h3>

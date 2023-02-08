@@ -3,8 +3,8 @@ import eventsData from "./data";
 import { v1 as generateUniqueID } from "uuid";
 // import Attendees from "./Attendees";
 import Event from "./Components/Event";
-// import Footer from "./Components/Footer";
-// import Header from "./Components/Header";
+import Footer from "./Components/Footer";
+import Header from "./Components/Header";
  import NewEventForm from "./Components/NewEventForm";
 
 // !! Depending on the size of your application, that will determine if you should work bottom-up vs top-bottom
@@ -30,18 +30,18 @@ function App() {
     people: [],
   });
 
-  // function addEvent() {
-  //   const createEvent = {
-  //     id: generateUniqueID(),
-  //     eventType: selectOption,
-  //     name: newEvent.name,
-  //     organizer: newEvent.organizer,
-  //     eventImage: newEvent.eventImage || "https://loremflickr.com/640/480/",
-  //     date: newEvent.date,
-  //     people: [],
-  //   };
-  //   handleAddEvent(createEvent);
-  // }
+  function addEvent() {
+    const createEvent = {
+      id: generateUniqueID(),
+      eventType: selectOption,
+      name: newEvent.name,
+      organizer: newEvent.organizer,
+      eventImage: newEvent.eventImage || "https://loremflickr.com/640/480/",
+      date: newEvent.date,
+      people: [],
+    };
+    handleAddEvent(createEvent);
+  }
 
   function handleSelectChange(e) {
     setSelectOption(e.target.value);
@@ -49,7 +49,7 @@ function App() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // addEvent();
+     addEvent();
     resetEventForm();
   }
 
@@ -97,9 +97,10 @@ function App() {
   return (
     <div className="App">
       <>
-        <header>
+      <Header/>
+        {/* <header>
           <h1 className="color-change-5x">RSVP App</h1>
-        </header>
+        </header> */}
       </>
       <main>
         <div className="new-event">
@@ -158,7 +159,7 @@ function App() {
 
               return (
                 <>
-                <Event event={event} />
+                <Event event={event} attendees={attendees} updateEventAttendance={updateEventAttendance} setShowAttendees={setShowAttendees} showAttendees={showAttendees} />
                   {/* <li key={event.id}> */}
                     
                     {/* <img src={event.eventImage} alt={event.name} />
@@ -223,13 +224,14 @@ function App() {
         </div>
       </main>
       <>
-        <footer>
+      <Footer />
+        {/* <footer>
           <ul>
             <li>Contact</li>
             <li>About</li>
             <li>Legal</li>
           </ul>
-        </footer>
+        </footer> */}
       </>
     </div>
   );

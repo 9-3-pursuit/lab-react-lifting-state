@@ -1,11 +1,16 @@
-export default function Event({ event, attendees, updateEventAttendance,setShowAttendees,showAttendees}) {
-//  const [showAttendees, setShowAttendees] = useState(false);
-  function toggleEventAttendees() {
+export default function Event({
+  event,
+  attendees,
+  updateEventAttendance,
+  setShowAttendees,
+  showAttendees }) {
+  // const [showAttendees, setShowAttendees] = useState(false); // * sets what attendees will show in relation to user clicks
+  function toggleEventAttendees() { // * switches b/t attendee information upon user click; moved from app.js
     setShowAttendees(!showAttendees);
   }
 
   return (
-
+    // * Events section of HTML
     <li key={event.id}>
       <img src={event.eventImage} alt={event.name} />
       <h5>
@@ -21,6 +26,7 @@ export default function Event({ event, attendees, updateEventAttendance,setShowA
 
         {showAttendees ? (
           <div className="attendees">
+            {/* Attendes.js file info goes here */}
             {attendees.map((attendee, index) => (
               <>
                 <div key={attendee.id} className="attendee">
