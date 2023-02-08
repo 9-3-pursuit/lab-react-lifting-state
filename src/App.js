@@ -2,10 +2,16 @@ import { useState } from "react";
 import eventsData from "./data";
 import { v1 as generateUniqueID } from "uuid";
 // import Attendees from "./Attendees";
-// import Event from "./Components/Event";
+import Event from "./Components/Event";
 // import Footer from "./Components/Footer";
 // import Header from "./Components/Header";
-// import NewEventForm from "./Components/NewEventForm";
+ import NewEventForm from "./Components/NewEventForm";
+
+// !! Depending on the size of your application, that will determine if you should work bottom-up vs top-bottom
+// !! botton-up starts from the smaller section to the bigger section while top-bottom aka lifting state means working from bigger sectio to smaller section
+//  ! Header & New Event form section DOES NOT CHANGE
+// * Event section ;state setter will be hooked into its corresponding js files
+// ? Attendees section is nested inside of Events
 
 function App() {
   const [events, setEvents] = useState(eventsData);
@@ -24,18 +30,18 @@ function App() {
     people: [],
   });
 
-  function addEvent() {
-    const createEvent = {
-      id: generateUniqueID(),
-      eventType: selectOption,
-      name: newEvent.name,
-      organizer: newEvent.organizer,
-      eventImage: newEvent.eventImage || "https://loremflickr.com/640/480/",
-      date: newEvent.date,
-      people: [],
-    };
-    handleAddEvent(createEvent);
-  }
+  // function addEvent() {
+  //   const createEvent = {
+  //     id: generateUniqueID(),
+  //     eventType: selectOption,
+  //     name: newEvent.name,
+  //     organizer: newEvent.organizer,
+  //     eventImage: newEvent.eventImage || "https://loremflickr.com/640/480/",
+  //     date: newEvent.date,
+  //     people: [],
+  //   };
+  //   handleAddEvent(createEvent);
+  // }
 
   function handleSelectChange(e) {
     setSelectOption(e.target.value);
@@ -43,7 +49,7 @@ function App() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    addEvent();
+    // addEvent();
     resetEventForm();
   }
 
@@ -70,9 +76,9 @@ function App() {
     setEvents([event, ...events]);
   }
 
-  function toggleEventAttendees() {
-    setShowAttendees(!showAttendees);
-  }
+  // function toggleEventAttendees() {
+  //   setShowAttendees(!showAttendees);
+  // }
 
   function updateEventAttendance(eventId, attendeeId) {
     const eventArray = [...events];
@@ -97,7 +103,15 @@ function App() {
       </>
       <main>
         <div className="new-event">
-          <>
+          <NewEventForm handleAddEvent={handleAddEvent}
+  selectOption={selectOption}
+  generateUniqueID={generateUniqueID}
+  handleSubmit={handleSubmit}
+  newEvent={newEvent}
+  handleTextChange={handleTextChange}
+  handleSelectChange={handleSelectChange } 
+  />
+          {/* <>
             <form onSubmit={handleSubmit}>
               <h3>Create a new event</h3>
               <label htmlFor="name">Event name:</label>
@@ -135,7 +149,7 @@ function App() {
               <br />
               <input type="submit" />
             </form>
-          </>
+          </> */}
         </div>
         <div className="events">
           <ul>
@@ -144,8 +158,10 @@ function App() {
 
               return (
                 <>
-                  <li key={event.id}>
-                    <img src={event.eventImage} alt={event.name} />
+                <Event event={event} />
+                  {/* <li key={event.id}> */}
+                    
+                    {/* <img src={event.eventImage} alt={event.name} />
                     <h5>
                       {event.name} {event.eventType}
                     </h5>
@@ -198,8 +214,8 @@ function App() {
                           ))}
                         </div>
                       ) : null}
-                    </>
-                  </li>
+                    </> */}
+                  {/* </li> */}
                 </>
               );
             })}
