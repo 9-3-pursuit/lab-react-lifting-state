@@ -55,12 +55,12 @@ You have a fully funtional app. It can:
 
 You should move the JSX into the correct components:
 
-- **Header**. `header` is top level HTML element.
-- **Footer**. `footer` is top level HTML element.
-- **NewEventForm**. `form` is top level HTML element.
-- **Event**. `li` with className `event` is the top level HTML element.
-- **Attendees**. `button` with text `Show/Hide Attendees` and `div` with className `attendees` are the top level HTML elements.
-- **Attendee**. `div` with className `attendee` is the top level HTML element.
+- [] **Header**. `header` is top level HTML element.
+- [] **Footer**. `footer` is top level HTML element.
+- [✅] **NewEventForm**. `form` is top level HTML element.
+- [✅] **Event**. `li` with className `event` is the top level HTML element.
+- [✅] **Attendees**. `button` with text `Show/Hide Attendees` and `div` with className `attendees` are the top level HTML elements.
+- [✅] **Attendee**. `div` with className `attendee` is the top level HTML element.
 
 You should maintain the same HTML element heiarchy (you should not need to add or edit HTML elements), however, you will need to move the HTML elements into different components. The filenames and functional component shells are already included in the starter code.
 
