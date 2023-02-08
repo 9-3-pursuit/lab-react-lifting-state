@@ -13,6 +13,7 @@ function App() {
   const [showAttendees, setShowAttendees] = useState(false);
 
   const [selectOption, setSelectOption] = useState("");
+  
 
   const [newEvent, setNewEvent] = useState({
     id: "",
