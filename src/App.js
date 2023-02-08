@@ -4,8 +4,8 @@ import { v1 as generateUniqueID } from "uuid";
 import Header from "./Components/Header";
 // import Attendees from "./Attendees";
 // import Event from "./Components/Event";
-// import Footer from "./Components/Footer";
 // import NewEventForm from "./Components/NewEventForm";
+import Footer from "./Components/Footer";
 
 function App() {
   const [events, setEvents] = useState(eventsData);
@@ -202,15 +202,7 @@ function App() {
           </ul>
         </div>
       </main>
-      <>
-        <footer>
-          <ul>
-            <li>Contact</li>
-            <li>About</li>
-            <li>Legal</li>
-          </ul>
-        </footer>
-      </>
+      <Footer />
     </div>
   );
 }
