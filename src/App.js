@@ -1,51 +1,51 @@
 import { useState } from "react";
 import eventsData from "./data";
-import { v1 as generateUniqueID } from "uuid";
-// import Attendees from "./Attendees";
-// import Event from "./Components/Event";
-// import Footer from "./Components/Footer";
-// import Header from "./Components/Header";
-// import NewEventForm from "./Components/NewEventForm";
+//import { v1 as generateUniqueID } from "uuid";
+//import Attendees from "./Attendees";
+//import Event from "./Components/Event";
+import Footer from "./Components/Footer";
+import Header from "./Components/Header";
+//import NewEventForm from "./Components/NewEventForm";
 
 function App() {
-  const [events, setEvents] = useState(eventsData);
+  //const [events, setEvents] = useState(eventsData); // moved to Events.js file
 
-  const [showAttendees, setShowAttendees] = useState(false);
+  //const [showAttendees, setShowAttendees] = useState(false); // moved to Attendees.js file
 
   const [selectOption, setSelectOption] = useState("");
 
-  const [newEvent, setNewEvent] = useState({
-    id: "",
-    eventType: "",
-    name: "",
-    organizer: "",
-    eventImage: "",
-    date: "",
-    people: [],
-  });
+  // const [newEvent, setNewEvent] = useState({
+  //   id: "",
+  //   eventType: "",
+  //   name: "",
+  //   organizer: "",
+  //   eventImage: "",
+  //   date: "",
+  //   people: [],
+  // });   // moved to NewEventsForm.js file
 
-  function addEvent() {
-    const createEvent = {
-      id: generateUniqueID(),
-      eventType: selectOption,
-      name: newEvent.name,
-      organizer: newEvent.organizer,
-      eventImage: newEvent.eventImage || "https://loremflickr.com/640/480/",
-      date: newEvent.date,
-      people: [],
-    };
-    handleAddEvent(createEvent);
-  }
+  // function addEvent() { 
+  //   const createEvent = {
+  //     id: generateUniqueID(),
+  //     eventType: selectOption,
+  //     name: newEvent.name,
+  //     organizer: newEvent.organizer,
+  //     eventImage: newEvent.eventImage || "https://loremflickr.com/640/480/",
+  //     date: newEvent.date,
+  //     people: [],
+  //   };
+  //   handleAddEvent(createEvent);
+  // }      // moved to NewEventForm.js file
 
   function handleSelectChange(e) {
     setSelectOption(e.target.value);
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    addEvent();
-    resetEventForm();
-  }
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   addEvent();
+  //   resetEventForm();
+  // }     // moved to Event.js file
 
   function handleTextChange(e) {
     setNewEvent({
@@ -54,17 +54,17 @@ function App() {
     });
   }
 
-  function resetEventForm() {
-    setNewEvent({
-      id: "",
-      eventType: "",
-      name: "",
-      organizer: "",
-      eventImage: "",
-      date: "",
-    });
-    setSelectOption("");
-  }
+  // function resetEventForm() {
+  //   setNewEvent({
+  //     id: "",
+  //     eventType: "",
+  //     name: "",
+  //     organizer: "",
+  //     eventImage: "",
+  //     date: "",
+  //   });
+  //   setSelectOption("");
+  // }     // moved to NewEventForm.js file
 
   function handleAddEvent(event) {
     setEvents([event, ...events]);
@@ -74,19 +74,19 @@ function App() {
     setShowAttendees(!showAttendees);
   }
 
-  function updateEventAttendance(eventId, attendeeId) {
-    const eventArray = [...events];
-    const eventIndex = eventArray.findIndex((event) => eventId === event.id);
-    const event = { ...eventArray[eventIndex] };
-    const personIndex = event.people.findIndex(
-      (person) => person.id === attendeeId
-    );
-    const peopleArray = [...event.people];
-    peopleArray[personIndex].attendance = !peopleArray[personIndex].attendance;
-    event.people = peopleArray;
-    eventArray[eventIndex] = event;
-    setEvents(eventArray);
-  }
+  // function updateEventAttendance(eventId, attendeeId) { // This file was moved to Attendee.js file
+  //   const eventArray = [...events];
+  //   const eventIndex = eventArray.findIndex((event) => eventId === event.id);
+  //   const event = { ...eventArray[eventIndex] };
+  //   const personIndex = event.people.findIndex(
+  //     (person) => person.id === attendeeId
+  //   );
+  //   const peopleArray = [...event.people];
+  //   peopleArray[personIndex].attendance = !peopleArray[personIndex].attendance;
+  //   event.people = peopleArray;
+  //   eventArray[eventIndex] = event;
+  //   setEvents(eventArray);
+  // }
 
   return (
     <div className="App">
