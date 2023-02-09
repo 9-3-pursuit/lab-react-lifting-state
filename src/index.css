@@ -94,7 +94,7 @@ input[type="submit"] {
   margin: auto;
 }
 
-.events li {
+.event li {
   width: 48%;
   min-height: 360px;
   box-shadow: 2px 2px 4px black;
