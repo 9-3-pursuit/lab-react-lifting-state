@@ -1,14 +1,16 @@
 import { useState } from "react";
 import Attendee from "./Attendee";
 
-function Attendees() {
+function Attendees({ event, updateEventAttendance }) {
   const [showAttendees, setShowAttendees] = useState(false);
+
+  const { people: attendees } = event;
+
   function toggleEventAttendees() {
     setShowAttendees(!showAttendees);
   }
-
-  return(
-    <div>
+  return (
+    <>
       <button onClick={toggleEventAttendees}>
         {!showAttendees ? "Show Attendees" : "Hide Attendees"}
       </button>
@@ -16,11 +18,15 @@ function Attendees() {
       {showAttendees ? (
         <div className="attendees">
           {attendees.map((attendee, index) => (
-              <Attendee />
+            <Attendee
+              attendee={attendee}
+              event={event}
+              updateEventAttendance={updateEventAttendance}
+            />
           ))}
         </div>
       ) : null}
-    </div>
-  )
+    </>
+  );
 }
 export default Attendees

@@ -1,11 +1,8 @@
-
 import { useState } from "react";
-
 import { v1 as generateUniqueID } from "uuid";
 
 function NewEventForm({ handleAddEvent }) {
   const [selectOption, setSelectOption] = useState("");
-  
   const [newEvent, setNewEvent] = useState({
     id: "",
     eventType: "",
@@ -58,8 +55,8 @@ function NewEventForm({ handleAddEvent }) {
     setSelectOption("");
   }
 
-  return(          
-    <div>
+  return (
+    <>
       <form onSubmit={handleSubmit}>
         <h3>Create a new event</h3>
         <label htmlFor="name">Event name:</label>
@@ -85,7 +82,6 @@ function NewEventForm({ handleAddEvent }) {
           onChange={handleTextChange}
           value={newEvent.eventImage}
         />
-        
         <label htmlFor="eventType">Event type:</label>
         <select id="eventType" onChange={handleSelectChange}>
           <option value=""></option>
@@ -98,7 +94,7 @@ function NewEventForm({ handleAddEvent }) {
         <br />
         <input type="submit" />
       </form>
-    </div>
-  )
+    </>
+  );
 }
 export default NewEventForm
