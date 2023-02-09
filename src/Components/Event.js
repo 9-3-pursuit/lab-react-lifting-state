@@ -9,22 +9,20 @@ const Event = ({ attendees, event, updateEventAttendance }) => {
   }
 
   return (
-    <>
-      <li key={event.id}>
-        <img src={event.eventImage} alt={event.name} />
-        <h5>
-          {event.name} {event.eventType}
-        </h5>
-        <br />
-        <span>Organized by: {event.organizer} </span>
-        <br />
-        <div className="event">
-          <button onClick={toggleEventAttendees}>{!showAttendees ? "Show Attendees" : "Hide Attendees"}</button>
+    <li key={event.id}>
+      <img src={event.eventImage} alt={event.name} />
+      <h5>
+        {event.name} {event.eventType}
+      </h5>
+      <br />
+      <span>Organized by: {event.organizer} </span>
+      <br />
+      <div className="event">
+        <button onClick={toggleEventAttendees}>{!showAttendees ? "Show Attendees" : "Hide Attendees"}</button>
 
-          {showAttendees ? <Attendees attendees={attendees} updateEventAttendance={updateEventAttendance} event={event} /> : null}
-        </div>
-      </li>
-    </>
+        {showAttendees ? <Attendees attendees={attendees} updateEventAttendance={updateEventAttendance} event={event} /> : null}
+      </div>
+    </li>
   );
 };
 
