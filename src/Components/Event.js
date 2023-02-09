@@ -1,11 +1,21 @@
-import { useState } from "react";
-export default function Event({ event }) {
-  const [events, setEvents] = useState(eventsData);
-  
-  function handleSubmit(e) {
-    e.preventDefault();
-    addEvent();
-    resetEventForm();
-  }
-  return;
+import Attendees from "./Attendees";
+
+export default function Event({ event, updateEventAttendance }) {
+  return (
+    <>
+      <li key={event.id} className="event">
+        <img src={event.eventImage} alt={event.name} />
+        <h5>
+          {event.name} {event.eventType}
+        </h5>
+        <br />
+        <span>Organized by: {event.organizer} </span>
+        <br />
+        <Attendees
+          event={event}
+          updateEventAttendance={updateEventAttendance}
+        />
+      </li>
+    </>
+  );
 }
