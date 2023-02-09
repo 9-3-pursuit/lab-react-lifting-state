@@ -24,16 +24,16 @@ function App() {
     eventArray[eventIndex] = event;
     setEvents(eventArray);
   }
-    return (
-      <div className="App">
+  return (
+    <div className="App">
         <Header />
-        <main>
+      <main>
         <div className="new-event">
         <NewEventForm handleAddEvent={handleAddEvent} />
         </div>
         <div className="events">
-        <ul>
-        {events.map((event) => (
+          <ul>
+          {events.map((event) => (
               <Event
                 event={event}
                 updateEventAttendance={updateEventAttendance}
