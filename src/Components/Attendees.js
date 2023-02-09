@@ -1,3 +1,3 @@
-export default function Attendees() {
-  return;
-}
+const Attendees = () => {};
+
+export default Attendees;

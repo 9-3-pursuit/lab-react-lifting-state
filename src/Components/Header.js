@@ -1,3 +1,3 @@
-export default function Header() {
-  return;
-}
+const Header = () => {};
+
+export default Header;

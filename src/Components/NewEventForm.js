@@ -1,3 +1,2 @@
-export default function NewEventForm({ handleAddEvent }) {
-  return;
-}
+const NewEventForm = ({ handleAddEvent }) => {};
+export default NewEventForm;

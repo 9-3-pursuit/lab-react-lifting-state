@@ -1,3 +1,3 @@
-export default function Event() {
-  return;
-}
+const Event = () => {};
+
+export default Event;
