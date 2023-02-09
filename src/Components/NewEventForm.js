@@ -3,6 +3,7 @@ import { v1 as generateUniqueID } from "uuid";
 
 function NewEventForm({ handleAddEvent }) {
   const [selectOption, setSelectOption] = useState("");
+
   const [newEvent, setNewEvent] = useState({
     id: "",
     eventType: "",
@@ -56,7 +57,7 @@ function NewEventForm({ handleAddEvent }) {
   }
 
   return (
-    <>
+    <div>
       <form onSubmit={handleSubmit}>
         <h3>Create a new event</h3>
         <label htmlFor="name">Event name:</label>
@@ -94,7 +95,7 @@ function NewEventForm({ handleAddEvent }) {
         <br />
         <input type="submit" />
       </form>
-    </>
+    </div>
   );
 }
 export default NewEventForm

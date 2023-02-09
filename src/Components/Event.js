@@ -1,7 +1,6 @@
 import Attendees from "./Attendees";
 
 function Event({ event, updateEventAttendance }) {
-  const {people:attendees} = event
   return (
     <div>
       <li key={event.id} className="event">
@@ -12,7 +11,7 @@ function Event({ event, updateEventAttendance }) {
         <br />
         <span>Organized by: {event.organizer} </span>
         <br />
-        <Attendees 
+        <Attendees
           event={event}
           updateEventAttendance={updateEventAttendance}
         />

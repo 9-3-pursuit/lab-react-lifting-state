@@ -10,7 +10,7 @@ function Attendees({ event, updateEventAttendance }) {
     setShowAttendees(!showAttendees);
   }
   return (
-    <>
+    <div>
       <button onClick={toggleEventAttendees}>
         {!showAttendees ? "Show Attendees" : "Hide Attendees"}
       </button>
@@ -26,7 +26,7 @@ function Attendees({ event, updateEventAttendance }) {
           ))}
         </div>
       ) : null}
-    </>
+    </div>
   );
 }
 export default Attendees

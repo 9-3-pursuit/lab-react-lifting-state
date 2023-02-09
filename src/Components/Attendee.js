@@ -1,6 +1,5 @@
 function Attendee({ attendee, updateEventAttendance, event }) {
   return (
-    <>
       <div key={attendee.id} className="attendee">
         <p>
           <img src={attendee.avatar} alt={attendee.firstName} />
@@ -24,7 +23,6 @@ function Attendee({ attendee, updateEventAttendance, event }) {
           <span>Note:</span> {attendee.note}
         </p>
       </div>
-    </>
   );
 }
 export default Attendee
