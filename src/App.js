@@ -1,78 +1,77 @@
 import { useState } from "react";
 import eventsData from "./data";
-import { v1 as generateUniqueID } from "uuid";
-// import Attendees from "./Attendees";
-// import Event from "./Components/Event";
-// import Footer from "./Components/Footer";
-// import Header from "./Components/Header";
-// import NewEventForm from "./Components/NewEventForm";
+import Attendees from "./Components/Attendees";
+import Event from "./Components/Event";
+import Footer from "./Components/Footer";
+import Header from "./Components/Header";
+import NewEventForm from "./Components/NewEventForm";
 
 function App() {
   const [events, setEvents] = useState(eventsData);
 
-  const [showAttendees, setShowAttendees] = useState(false);
+  // const [showAttendees, setShowAttendees] = useState(false);
 
-  const [selectOption, setSelectOption] = useState("");
+  // const [selectOption, setSelectOption] = useState("");
 
-  const [newEvent, setNewEvent] = useState({
-    id: "",
-    eventType: "",
-    name: "",
-    organizer: "",
-    eventImage: "",
-    date: "",
-    people: [],
-  });
+  // const [newEvent, setNewEvent] = useState({
+  //   id: "",
+  //   eventType: "",
+  //   name: "",
+  //   organizer: "",
+  //   eventImage: "",
+  //   date: "",
+  //   people: [],
+  // });
 
-  function addEvent() {
-    const createEvent = {
-      id: generateUniqueID(),
-      eventType: selectOption,
-      name: newEvent.name,
-      organizer: newEvent.organizer,
-      eventImage: newEvent.eventImage || "https://loremflickr.com/640/480/",
-      date: newEvent.date,
-      people: [],
-    };
-    handleAddEvent(createEvent);
-  }
+  // function addEvent() {
+  //   const createEvent = {
+  //     id: generateUniqueID(),
+  //     eventType: selectOption,
+  //     name: newEvent.name,
+  //     organizer: newEvent.organizer,
+  //     eventImage: newEvent.eventImage || "https://loremflickr.com/640/480/",
+  //     date: newEvent.date,
+  //     people: [],
+  //   };
+  //   handleAddEvent(createEvent);
+  // }
 
-  function handleSelectChange(e) {
-    setSelectOption(e.target.value);
-  }
+  // function handleSelectChange(e) {
+  //   setSelectOption(e.target.value);
+  // }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    addEvent();
-    resetEventForm();
-  }
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   addEvent();
+  //   resetEventForm();
+  // }
 
-  function handleTextChange(e) {
-    setNewEvent({
-      ...newEvent,
-      [e.target.id]: e.target.value,
-    });
-  }
+  // function handleTextChange(e) {
+  //   setNewEvent({
+  //     ...newEvent,
+  //     [e.target.id]: e.target.value,
+  //   });
+  // }
 
-  function resetEventForm() {
-    setNewEvent({
-      id: "",
-      eventType: "",
-      name: "",
-      organizer: "",
-      eventImage: "",
-      date: "",
-    });
-    setSelectOption("");
-  }
+  // function resetEventForm() {
+  //   setNewEvent({
+  //     id: "",
+  //     eventType: "",
+  //     name: "",
+  //     organizer: "",
+  //     eventImage: "",
+  //     date: "",
+  //   });
+  //   setSelectOption("");
+  // }
 
   function handleAddEvent(event) {
     setEvents([event, ...events]);
   }
 
-  function toggleEventAttendees() {
-    setShowAttendees(!showAttendees);
-  }
+  // function toggleEventAttendees() {
+  //   setShowAttendees(!showAttendees);
+  // }
 
   function updateEventAttendance(eventId, attendeeId) {
     const eventArray = [...events];
@@ -90,14 +89,15 @@ function App() {
 
   return (
     <div className="App">
-      <>
+      {/* <>
         <header>
           <h1 className="color-change-5x">RSVP App</h1>
         </header>
-      </>
+      </> */}
+     <Header/>
       <main>
         <div className="new-event">
-          <>
+          {/* <>
             <form onSubmit={handleSubmit}>
               <h3>Create a new event</h3>
               <label htmlFor="name">Event name:</label>
@@ -135,10 +135,11 @@ function App() {
               <br />
               <input type="submit" />
             </form>
-          </>
+          </> */}
+       <NewEventForm handleAddEvent={handleAddEvent} />
         </div>
         <div className="events">
-          <ul>
+          {/* <ul>
             {events.map((event) => {
               const { people: attendees } = event;
 
@@ -203,10 +204,18 @@ function App() {
                 </>
               );
             })}
-          </ul>
+          </ul> */}
+        <Event
+            Attendees={Attendees}
+            updateEventAttendance={updateEventAttendance}
+            events={events}
+          />
+        
+        
+        
         </div>
       </main>
-      <>
+      {/* <>
         <footer>
           <ul>
             <li>Contact</li>
@@ -214,7 +223,8 @@ function App() {
             <li>Legal</li>
           </ul>
         </footer>
-      </>
+      </> */}
+    <Footer />
     </div>
   );
 }
