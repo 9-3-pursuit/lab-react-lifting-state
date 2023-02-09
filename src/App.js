@@ -1,16 +1,17 @@
 import { useState } from "react";
 import eventsData from "./data";
 import { v1 as generateUniqueID } from "uuid";
+import NewEventForm from "./Components/NewEventForm";
 // import Attendees from "./Attendees";
-// import Event from "./Components/Event";
-// import Footer from "./Components/Footer";
-// import Header from "./Components/Header";
+import Event from "./Components/Event";
+import Footer from "./Components/Footer";
+import Header from "./Components/Header";
 // import NewEventForm from "./Components/NewEventForm";
 
 function App() {
   const [events, setEvents] = useState(eventsData);
 
-  const [showAttendees, setShowAttendees] = useState(false);
+  // const [showAttendees, setShowAttendees] = useState(false);
 
   const [selectOption, setSelectOption] = useState("");
 
@@ -70,9 +71,9 @@ function App() {
     setEvents([event, ...events]);
   }
 
-  function toggleEventAttendees() {
-    setShowAttendees(!showAttendees);
-  }
+  // function toggleEventAttendees() {
+  //   setShowAttendees(!showAttendees);
+  // }
 
   function updateEventAttendance(eventId, attendeeId) {
     const eventArray = [...events];
@@ -90,14 +91,15 @@ function App() {
 
   return (
     <div className="App">
-      <>
+       {/* <>
         <header>
           <h1 className="color-change-5x">RSVP App</h1>
         </header>
-      </>
+      </>  */}
+      <Header/>
       <main>
         <div className="new-event">
-          <>
+          {/* <>
             <form onSubmit={handleSubmit}>
               <h3>Create a new event</h3>
               <label htmlFor="name">Event name:</label>
@@ -135,7 +137,16 @@ function App() {
               <br />
               <input type="submit" />
             </form>
-          </>
+          </> */}
+
+          <NewEventForm
+          
+          handleAddEvent={handleAddEvent}
+          handleSubmit = {handleSubmit}
+          handleTextChange={handleTextChange}
+          newEvent={newEvent}
+          handleSelectChange={handleSelectChange}
+          />
         </div>
         <div className="events">
           <ul>
@@ -143,25 +154,25 @@ function App() {
               const { people: attendees } = event;
 
               return (
-                <>
-                  <li key={event.id}>
-                    <img src={event.eventImage} alt={event.name} />
-                    <h5>
-                      {event.name} {event.eventType}
-                    </h5>
-                    <br />
-                    <span>Organized by: {event.organizer} </span>
-                    <br />
-                    <>
-                      <button onClick={toggleEventAttendees}>
-                        {!showAttendees ? "Show Attendees" : "Hide Attendees"}
-                      </button>
+                // <>
+                //   <li key={event.id}>
+                //     <img src={event.eventImage} alt={event.name} />
+                //     <h5>
+                //       {event.name} {event.eventType}
+                //     </h5>
+                //     <br />
+                //     <span>Organized by: {event.organizer} </span>
+                //     <br />
+                //     <>
+                //       <button onClick={toggleEventAttendees}>
+                //         {!showAttendees ? "Show Attendees" : "Hide Attendees"}
+                //       </button>
 
-                      {showAttendees ? (
-                        <div className="attendees">
-                          {attendees.map((attendee, index) => (
-                            <>
-                              <div key={attendee.id} className="attendee">
+                //       {showAttendees ? (
+                //         <div className="attendees">
+                //           {attendees.map((attendee, index) => (
+                            // <>
+                              /* <div key={attendee.id} className="attendee">
                                 <p>
                                   <img
                                     src={attendee.avatar}
@@ -193,27 +204,34 @@ function App() {
                                 <p>
                                   <span>Note:</span> {attendee.note}
                                 </p>
-                              </div>
-                            </>
-                          ))}
-                        </div>
-                      ) : null}
-                    </>
-                  </li>
-                </>
+                              </div> */
+                            // </>
+                //           ))}
+                //         </div>
+                //       ) : null}
+                //     </>
+                //   </li>
+                // </>
+                <Event 
+                attendees = {attendees}
+                event = {event}
+                updateEventAttendance = {updateEventAttendance}
+                />
               );
             })}
           </ul>
         </div>
       </main>
-      <>
-        <footer>
+       <>
+        {/* <footer>
           <ul>
             <li>Contact</li>
             <li>About</li>
             <li>Legal</li>
           </ul>
-        </footer>
+        </footer> */}
+      
+      <Footer />
       </>
     </div>
   );
