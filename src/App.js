@@ -3,8 +3,8 @@ import eventsData from "./data";
 import { v1 as generateUniqueID } from "uuid";
 // import Attendees from "./Attendees";
 // import Event from "./Components/Event";
-// import Footer from "./Components/Footer";
-// import Header from "./Components/Header";
+import Footer from "./Components/Footer";
+import Header from "./Components/Header";
 // import NewEventForm from "./Components/NewEventForm";
 
 function App() {
@@ -78,9 +78,7 @@ function App() {
     const eventArray = [...events];
     const eventIndex = eventArray.findIndex((event) => eventId === event.id);
     const event = { ...eventArray[eventIndex] };
-    const personIndex = event.people.findIndex(
-      (person) => person.id === attendeeId
-    );
+    const personIndex = event.people.findIndex((person) => person.id === attendeeId);
     const peopleArray = [...event.people];
     peopleArray[personIndex].attendance = !peopleArray[personIndex].attendance;
     event.people = peopleArray;
@@ -90,39 +88,20 @@ function App() {
 
   return (
     <div className="App">
-      <>
-        <header>
-          <h1 className="color-change-5x">RSVP App</h1>
-        </header>
-      </>
+      <Header />
       <main>
         <div className="new-event">
           <>
             <form onSubmit={handleSubmit}>
               <h3>Create a new event</h3>
               <label htmlFor="name">Event name:</label>
-              <input
-                type="text"
-                id="name"
-                onChange={handleTextChange}
-                value={newEvent.name}
-              />
+              <input type="text" id="name" onChange={handleTextChange} value={newEvent.name} />
 
               <label htmlFor="organizer">Organizer:</label>
-              <input
-                type="text"
-                id="organizer"
-                onChange={handleTextChange}
-                value={newEvent.organizer}
-              />
+              <input type="text" id="organizer" onChange={handleTextChange} value={newEvent.organizer} />
 
               <label htmlFor="eventImage">Event image:</label>
-              <input
-                type="text"
-                id="eventImage"
-                onChange={handleTextChange}
-                value={newEvent.eventImage}
-              />
+              <input type="text" id="eventImage" onChange={handleTextChange} value={newEvent.eventImage} />
               <label htmlFor="eventType">Event type:</label>
               <select id="eventType" onChange={handleSelectChange}>
                 <option value=""></option>
@@ -153,9 +132,7 @@ function App() {
                     <span>Organized by: {event.organizer} </span>
                     <br />
                     <>
-                      <button onClick={toggleEventAttendees}>
-                        {!showAttendees ? "Show Attendees" : "Hide Attendees"}
-                      </button>
+                      <button onClick={toggleEventAttendees}>{!showAttendees ? "Show Attendees" : "Hide Attendees"}</button>
 
                       {showAttendees ? (
                         <div className="attendees">
@@ -163,10 +140,7 @@ function App() {
                             <>
                               <div key={attendee.id} className="attendee">
                                 <p>
-                                  <img
-                                    src={attendee.avatar}
-                                    alt={attendee.firstName}
-                                  />
+                                  <img src={attendee.avatar} alt={attendee.firstName} />
                                   {"   "}
                                   <span>
                                     {" "}
@@ -174,20 +148,10 @@ function App() {
                                   </span>
                                 </p>
                                 <p>
-                                  <button
-                                    className="clickable"
-                                    onClick={() =>
-                                      updateEventAttendance(
-                                        event.id,
-                                        attendee.id
-                                      )
-                                    }
-                                  >
+                                  <button className="clickable" onClick={() => updateEventAttendance(event.id, attendee.id)}>
                                     Attending:
                                   </button>
-                                  <span>
-                                    {attendee.attendance ? "✅" : "❌"}
-                                  </span>
+                                  <span>{attendee.attendance ? "✅" : "❌"}</span>
                                 </p>
 
                                 <p>
@@ -206,15 +170,7 @@ function App() {
           </ul>
         </div>
       </main>
-      <>
-        <footer>
-          <ul>
-            <li>Contact</li>
-            <li>About</li>
-            <li>Legal</li>
-          </ul>
-        </footer>
-      </>
+      <Footer />
     </div>
   );
 }
