@@ -1,3 +1,14 @@
-export default function Footer() {
-  return;
+function Footer() {
+  return(
+    <div>
+      <footer>
+        <ul>
+          <li>Contact</li>
+          <li>About</li>
+          <li>Legal</li>
+        </ul>
+      </footer>
+    </div>
+  )
 }
+export default Footer
