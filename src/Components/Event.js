@@ -2,7 +2,7 @@ import Attendees from "./Attendees";
 
 function Event({ event, updateEventAttendance }) {
   return (
-    <div>
+    <>
       <li key={event.id} className="event">
         <img src={event.eventImage} alt={event.name} />
         <h5>
@@ -16,7 +16,7 @@ function Event({ event, updateEventAttendance }) {
           updateEventAttendance={updateEventAttendance}
         />
       </li>
-    </div>
+    </>
   );
 }
 export default Event
