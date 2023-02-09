@@ -9,7 +9,7 @@ import NewEventForm from "./Components/NewEventForm";
 function App() {
   const [events, setEvents] = useState(eventsData);
 
-  const [showAttendees, setShowAttendees] = useState(false);
+  // const [showAttendees, setShowAttendees] = useState(false);
 
   const [selectOption, setSelectOption] = useState("");
 
@@ -69,9 +69,7 @@ function App() {
     setEvents([event, ...events]);
   }
 
-  function toggleEventAttendees() {
-    setShowAttendees(!showAttendees);
-  }
+
 
   function updateEventAttendance(eventId, attendeeId) {
     const eventArray = [...events];
@@ -89,10 +87,10 @@ function App() {
 
   return (
     <div className="App">
-      <Header/>
+      <Header />
       <main>
-          <NewEventForm handleSubmit={handleSubmit} handleTextChange={handleTextChange} newEvent={newEvent} handleSelectChange={handleSelectChange}/>
-          <Event events={events} toggleEventAttendees={toggleEventAttendees} showAttendees={showAttendees} updateEventAttendance={updateEventAttendance}/>
+        <NewEventForm handleSubmit={handleSubmit} handleTextChange={handleTextChange} newEvent={newEvent} handleSelectChange={handleSelectChange} />
+        <Event events={events} updateEventAttendance={updateEventAttendance} />
       </main>
       <>
         <footer>
