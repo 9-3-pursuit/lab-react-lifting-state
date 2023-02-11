@@ -63,7 +63,7 @@ describe("can show/hide attendees per event", () => {
         });
       });
   });
-  it("Only show/hides the attendees of one event", () => {
+  it("Only show/hides the attendees of one event!!!!!!", () => {
     cy.get(".events button")
       .eq(4)
       .click()
