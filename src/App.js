@@ -1,9 +1,9 @@
 import { useState } from "react";
 import eventsData from "./data";
-import Header from "./Components/Header";
-import NewEventForm from "./Components/NewEventForm";
-import Footer from "./Components/Footer";
-import EventList from "./Components/EventList";
+import Header from "./Components/HeaderFooter/Header";
+import Footer from "./Components/HeaderFooter/Footer";
+import NewEventForm from "./Components/Form/NewEventForm";
+import EventList from "./Components/EventList/EventList";
 
 function App() {
   const [events, setEvents] = useState(eventsData);

@@ -16,10 +16,16 @@ export default function EventList({ events, setEvents }) {
   }
 
   return (
-    <ul>
-      {events.map((event) => (
-        <Event event={event} updateEventAttendance={updateEventAttendance} />
-      ))}
-    </ul>
+    <>
+      <ul className="events">
+        {events.map((event) => (
+          <Event
+            key={event.id}
+            event={event}
+            updateEventAttendance={updateEventAttendance}
+          />
+        ))}
+      </ul>
+    </>
   );
 }
