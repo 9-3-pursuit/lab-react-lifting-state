@@ -5,49 +5,23 @@ import TextInputSection from "./TextInputSection";
 import SelectSection from "./SelectSection";
 
 export default function NewEventForm() {
-  const [selectOption, setSelectOption] = useState("");
-  const [newEvent, setNewEvent] = useState({
-    id: "",
+  const INITIAL_STATE = {
+    id: generateUniqueID(),
     eventType: "",
     name: "",
     organizer: "",
     eventImage: "",
     date: "",
     people: [],
-  });
-
+  };
+  const [newFormEvent, setNewFormEvent] = useState(INITIAL_STATE);
   const events = useContext(eventsContext);
   const setEvents = useContext(setEventsContext);
 
   function handleSubmit(e) {
     e.preventDefault();
-    addEvent();
-    resetEventForm();
-  }
-
-  function addEvent() {
-    const createEvent = {
-      id: generateUniqueID(),
-      eventType: selectOption,
-      name: newEvent.name,
-      organizer: newEvent.organizer,
-      eventImage: newEvent.eventImage || "https://loremflickr.com/640/480/",
-      date: newEvent.date,
-      people: [],
-    };
-    setEvents([createEvent, ...events]);
-  }
-
-  function resetEventForm() {
-    setNewEvent({
-      id: "",
-      eventType: "",
-      name: "",
-      organizer: "",
-      eventImage: "",
-      date: "",
-    });
-    setSelectOption("");
+    setEvents([newFormEvent, ...events]);
+    setNewFormEvent(INITIAL_STATE);
   }
 
   return (
@@ -55,8 +29,14 @@ export default function NewEventForm() {
       <div className="new-event">
         <form onSubmit={handleSubmit}>
           <h3>Create a new event</h3>
-          <TextInputSection newEvent={newEvent} setNewEvent={setNewEvent} />
-          <SelectSection setSelectOption={setSelectOption} />
+          <TextInputSection
+            newEvent={newFormEvent}
+            setNewEvent={setNewFormEvent}
+          />
+          <SelectSection
+            newEvent={newFormEvent}
+            setNewEvent={setNewFormEvent}
+          />
           <br />
           <input type="submit" />
         </form>

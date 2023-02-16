@@ -16,7 +16,7 @@ export default function TextInputSection({ newEvent, setNewEvent }) {
           key={generateUniqueID()}
           id={id}
           title={title}
-          newEvent={newEvent}
+          value={newEvent[id]}
           handleTextChange={handleTextChange}
         />
       ))}

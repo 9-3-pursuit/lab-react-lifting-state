@@ -1,5 +1,9 @@
-export default function SelectSection({ setSelectOption }) {
-  const handleSelectChange = (e) => setSelectOption(e.target.value);
+export default function SelectSection({ setNewEvent, newEvent }) {
+  const handleSelectChange = (e) =>
+    setNewEvent({
+      ...newEvent,
+      eventType: e.target.value,
+    });
 
   return (
     <>
