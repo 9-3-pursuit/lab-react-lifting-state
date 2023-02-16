@@ -38,11 +38,11 @@ main > div {
 
 form {
   background: #91b9bb;
-  padding: 1em;
-  padding-right: 5em;
+  padding: 2em;
   display: block;
-  margin: auto;
+  margin: 0 auto;
   border-radius: 10px;
+  text-align: center;
 }
 
 form h3 {
