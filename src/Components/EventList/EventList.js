@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { eventsContext } from "../../Data/eventsContext";
-import EventItem from "./EventItem";
+import Event from "./Event";
 
 export default function EventList() {
   const events = useContext(eventsContext);
@@ -9,7 +9,7 @@ export default function EventList() {
     <>
       <ul className="events">
         {events.map((event) => (
-          <EventItem key={event.id} event={event} />
+          <Event key={event.id} event={event} />
         ))}
       </ul>
     </>
