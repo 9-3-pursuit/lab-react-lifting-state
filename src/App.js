@@ -1,9 +1,9 @@
 import { useState } from "react";
 import eventsData from "./data";
 import Header from "./Components/Header";
-import Event from "./Components/Event";
 import NewEventForm from "./Components/NewEventForm";
 import Footer from "./Components/Footer";
+import EventList from "./Components/EventList";
 
 function App() {
   const [events, setEvents] = useState(eventsData);
@@ -12,19 +12,8 @@ function App() {
     <div className="App">
       <Header />
       <main>
-        <div className="new-event">
-          <NewEventForm handleAddEvent={handleAddEvent} />
-        </div>
-        <div className="events">
-          <ul>
-            {events.map((event) => (
-              <Event
-                event={event}
-                updateEventAttendance={updateEventAttendance}
-              />
-            ))}
-          </ul>
-        </div>
+        <NewEventForm events={events} setEvents={setEvents} />
+        <EventList events={events} setEvents={setEvents} />
       </main>
       <Footer />
     </div>
