@@ -1,6 +1,6 @@
 import Attendees from "./Attendees";
 
-export default function Event({ event, updateEventAttendance }) {
+export default function EventItem({ event }) {
   return (
     <>
       <li key={event.id} className="events">
@@ -11,10 +11,7 @@ export default function Event({ event, updateEventAttendance }) {
         <br />
         <span>Organized by: {event.organizer} </span>
         <br />
-        <Attendees
-          event={event}
-          updateEventAttendance={updateEventAttendance}
-        />
+        <Attendees event={event} />
       </li>
     </>
   );

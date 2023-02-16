@@ -1,21 +1,20 @@
-import { useState } from "react";
-import eventsData from "./data";
 import Header from "./Components/HeaderFooter/Header";
 import Footer from "./Components/HeaderFooter/Footer";
 import NewEventForm from "./Components/Form/NewEventForm";
 import EventList from "./Components/EventList/EventList";
+import ContextProvider from "./Components/ContextProvider";
 
 function App() {
-  const [events, setEvents] = useState(eventsData);
-
   return (
     <div className="App">
-      <Header />
-      <main>
-        <NewEventForm events={events} setEvents={setEvents} />
-        <EventList events={events} setEvents={setEvents} />
-      </main>
-      <Footer />
+      <ContextProvider>
+        <Header />
+        <main>
+          <NewEventForm />
+          <EventList />
+        </main>
+        <Footer />
+      </ContextProvider>
     </div>
   );
 }

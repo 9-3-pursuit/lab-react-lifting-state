@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { eventsContext, setEventsContext } from "../../Data/eventsContext";
 import { v1 as generateUniqueID } from "uuid";
-import Input from "./Input";
+import TextInputSection from "./TextInputSection";
+import SelectSection from "./SelectSection";
 
-export default function NewEventForm({ events, setEvents }) {
+export default function NewEventForm() {
   const [selectOption, setSelectOption] = useState("");
   const [newEvent, setNewEvent] = useState({
     id: "",
@@ -13,6 +15,9 @@ export default function NewEventForm({ events, setEvents }) {
     date: "",
     people: [],
   });
+
+  const events = useContext(eventsContext);
+  const setEvents = useContext(setEventsContext);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -30,7 +35,7 @@ export default function NewEventForm({ events, setEvents }) {
       date: newEvent.date,
       people: [],
     };
-    handleAddEvent(createEvent);
+    setEvents([createEvent, ...events]);
   }
 
   function resetEventForm() {
@@ -45,46 +50,13 @@ export default function NewEventForm({ events, setEvents }) {
     setSelectOption("");
   }
 
-  function handleSelectChange(e) {
-    setSelectOption(e.target.value);
-  }
-
-  function handleAddEvent(event) {
-    setEvents([event, ...events]);
-  }
-
   return (
     <>
       <div className="new-event">
         <form onSubmit={handleSubmit}>
           <h3>Create a new event</h3>
-          <Input
-            id="name"
-            title={"Event name"}
-            newEvent={newEvent}
-            setNewEvent={setNewEvent}
-          />
-          <Input
-            id="organizer"
-            title={"Organizer"}
-            newEvent={newEvent}
-            setNewEvent={setNewEvent}
-          />
-          <Input
-            id="eventImage"
-            title={"Event image"}
-            newEvent={newEvent}
-            setNewEvent={setNewEvent}
-          />
-          <label htmlFor="eventType">Event type:</label>
-          <select id="eventType" onChange={handleSelectChange}>
-            <option value=""></option>
-            <option value="Birthday">Birthday</option>
-            <option value="Anniversary">Anniversary</option>
-            <option value="Intramural Sport">Intramural Sport</option>
-            <option value="Watch Party">Watch Party</option>
-            <option value="wedding">Wedding</option>
-          </select>
+          <TextInputSection newEvent={newEvent} setNewEvent={setNewEvent} />
+          <SelectSection setSelectOption={setSelectOption} />
           <br />
           <input type="submit" />
         </form>

@@ -1,14 +1,13 @@
 import { useState } from "react";
 import Attendee from "./Attendee";
 
-export default function Attendees({ event, updateEventAttendance }) {
+export default function Attendees({ event, event: { people: attendees } }) {
   const [showAttendees, setShowAttendees] = useState(false);
-
-  const { people: attendees } = event;
 
   function toggleEventAttendees() {
     setShowAttendees(!showAttendees);
   }
+
   return (
     <>
       <button onClick={toggleEventAttendees}>
@@ -18,12 +17,7 @@ export default function Attendees({ event, updateEventAttendance }) {
       {showAttendees ? (
         <div className="attendees">
           {attendees.map((attendee, index) => (
-            <Attendee
-              key={attendee.id}
-              attendee={attendee}
-              event={event}
-              updateEventAttendance={updateEventAttendance}
-            />
+            <Attendee key={attendee.id} attendee={attendee} event={event} />
           ))}
         </div>
       ) : null}
