@@ -1,4 +1,3 @@
-import { v1 as generateUniqueID } from "uuid";
 import TextInput from "./TextInput";
 
 export default function TextInputSection({ newEvent, setNewEvent }) {
@@ -13,7 +12,7 @@ export default function TextInputSection({ newEvent, setNewEvent }) {
     <>
       {inputs.map(({ id, title }) => (
         <TextInput
-          key={generateUniqueID()}
+          key={id}
           id={id}
           title={title}
           value={newEvent[id]}
