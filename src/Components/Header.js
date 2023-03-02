@@ -1,3 +1,11 @@
-export default function Header() {
-  return;
+import React from 'react';
+
+function Header() {
+  return (
+    <header>
+      <h1>Event Planner</h1>
+    </header>
+  );
 }
+
+export default Header;
