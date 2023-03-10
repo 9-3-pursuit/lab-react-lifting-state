@@ -1,5 +1,40 @@
 export default function NewEventForm({ handleAddEvent }) {
-  return(
+
+  return
+}
+export default function NewEventForm(props){
+
+  function resetEventForm(){
+    props.setNewEvent({
+      id: "",
+      eventType: "",
+      name: "",
+      organizer: "",
+      eventImage: "",
+      date: "",
+    });
+    props.setSelectOption("");
+  }
+  function handleSelectChange(e){
+    props.setSelectOption(e.target.value);
+  }
+  function handleSubmit(e){
+    e.preventDefault();
+    props.addEvent();
+    resetEventForm();
+
+  }
+  function handleTextChange(e){
+    props.setNewEvent({
+      ...props.newEvent,
+      [e.target.id]: e.target.value,
+    });
+  }
+
+return (
+  <div className="new-event">
+    <>
+   
     <form onSubmit={handleSubmit}>
               <h3>Create a new event</h3>
               <label htmlFor="name">Event name:</label>
@@ -7,7 +42,7 @@ export default function NewEventForm({ handleAddEvent }) {
                 type="text"
                 id="name"
                 onChange={handleTextChange}
-                value={newEvent.name}
+                value={props.newEvent.name}
               />
 
               <label htmlFor="organizer">Organizer:</label>
@@ -15,7 +50,7 @@ export default function NewEventForm({ handleAddEvent }) {
                 type="text"
                 id="organizer"
                 onChange={handleTextChange}
-                value={newEvent.organizer}
+                value={props.newEvent.organizer}
               />
 
               <label htmlFor="eventImage">Event image:</label>
@@ -23,7 +58,7 @@ export default function NewEventForm({ handleAddEvent }) {
                 type="text"
                 id="eventImage"
                 onChange={handleTextChange}
-                value={newEvent.eventImage}
+                value={props.newEvent.eventImage}
               />
               <label htmlFor="eventType">Event type:</label>
               <select id="eventType" onChange={handleSelectChange}>
@@ -37,5 +72,7 @@ export default function NewEventForm({ handleAddEvent }) {
               <br />
               <input type="submit" />
             </form>
+            </>
+            </div>
   );
 }
