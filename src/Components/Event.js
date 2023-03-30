@@ -2,6 +2,7 @@ import Attendees from "./Attendees";
 import { useState } from "react";
 
 export default function Event({ event, attendees, updateEventAttendance }) {
+  console.log(event)
   const [showAttendees, setShowAttendees] = useState(false);
   
   const toggleEventAttendees = () => {
